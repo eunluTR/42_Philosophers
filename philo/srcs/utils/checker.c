@@ -6,11 +6,15 @@
 /*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:46:52 by eunlu             #+#    #+#             */
-/*   Updated: 2025/08/19 15:47:16 by eunlu            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:49:24 by eunlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
+
+static void		str_rtrim(char *str);
+static t_bool	check_limit(char *arg);
+static t_bool	check_validation(char *arg);
 
 static t_bool	is_positive_number(char *arg)
 {
