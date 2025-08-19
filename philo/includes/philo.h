@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:07:02 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:09:46 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PHILO_H
 # define PHILO_H
 
@@ -9,11 +21,14 @@
 # include <stdio.h>
 # include <string.h>
 
-
-typedef uint64_t					t_ms;
+typedef uint64_t				t_ms;
 typedef pthread_mutex_t			t_mutex;
 
-typedef enum e_bool { FALSE, TRUE } t_bool;
+typedef enum e_bool
+{
+	FALSE,
+	TRUE
+}	t_bool;
 
 typedef enum e_status
 {
@@ -22,7 +37,7 @@ typedef enum e_status
 	ST_SLEEPING,
 	ST_THINKING,
 	ST_DEAD
-} t_status;
+}	t_status;
 
 # define SUCCESS 0
 # define MAX_INT 2147483647
@@ -44,7 +59,6 @@ typedef enum e_status
 # define ERR_PTHREAD_CREATE "Pthread create failed!"
 # define ERR_GETTIMEOFDAY "gettimeofday() failed!"
 
-
 typedef struct s_locks
 {
 	t_mutex		mtx_print;
@@ -57,14 +71,14 @@ typedef struct s_locks
 	t_bool		init_error;
 	t_bool		init_full;
 	t_bool		init_meal;
-} t_locks;
+}	t_locks;
 
 typedef struct s_shared
 {
 	t_bool		flag_error;
 	t_bool		flag_death;
 	t_bool		flag_full;
-} t_shared;
+}	t_shared;
 
 typedef struct s_custom
 {
@@ -76,9 +90,7 @@ typedef struct s_custom
 	t_ms		sleep_time;
 	t_ms		last_meal_time;
 	t_ms		start_ts;
-} t_custom;
-
-struct s_philo;
+}	t_custom;
 
 typedef struct s_philo
 {
@@ -92,7 +104,7 @@ typedef struct s_philo
 	t_custom	data;
 	t_shared	*shared;
 	t_locks		*locks;
-} t_philo;
+}	t_philo;
 
 typedef struct s_table
 {
@@ -101,6 +113,6 @@ typedef struct s_table
 	t_locks		*locks;
 	t_shared	*shared;
 	t_custom	data;
-} t_table;
+}	t_table;
 
 #endif

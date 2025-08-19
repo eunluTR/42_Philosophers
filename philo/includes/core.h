@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   core.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:06:31 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:06:33 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CORE_H
 # define CORE_H
 
 # include "philo.h"
 
-// Core module function prototypes
 t_bool		check_args(int argc, char **argv);
 void		free_table(t_table *table);
 
