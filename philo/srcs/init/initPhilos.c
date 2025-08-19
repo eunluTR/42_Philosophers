@@ -6,13 +6,11 @@
 /*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:11:39 by eunlu             #+#    #+#             */
-/*   Updated: 2025/08/19 15:11:39 by eunlu            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:58:52 by eunlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-
-static t_bool	init_one(t_philo *ph, char **argv, int argc);
 
 void	init_custom_data(t_custom *data, char **argv, int argc)
 {
@@ -26,6 +24,18 @@ void	init_custom_data(t_custom *data, char **argv, int argc)
 		data->eat_limit = ft_atoui(argv[5]);
 	data->last_meal_time = 0;
 	data->start_ts = 0;
+}
+
+static t_bool	init_one(t_philo *ph, char **argv, int argc)
+{
+	memset(ph, 0, sizeof(t_philo));
+	init_custom_data(&ph->data, argv, argc);
+	ph->right_fork = (t_mutex *)ft_calloc(1, sizeof(t_mutex));
+	if (!ph->right_fork)
+		return (display_err_msg(ERR_ALLOC));
+	if (pthread_mutex_init(ph->right_fork, NULL) != SUCCESS)
+		return (display_err_msg(ERR_MTX_INIT));
+	return (TRUE);
 }
 
 t_bool	init_philos(t_philo **philos, char **argv, int argc)
@@ -48,18 +58,6 @@ t_bool	init_philos(t_philo **philos, char **argv, int argc)
 		arr[i].data.philo_count = n;
 		i++;
 	}
-	return (TRUE);
-}
-
-static t_bool	init_one(t_philo *ph, char **argv, int argc)
-{
-	memset(ph, 0, sizeof(t_philo));
-	init_custom_data(&ph->data, argv, argc);
-	ph->right_fork = (t_mutex *)ft_calloc(1, sizeof(t_mutex));
-	if (!ph->right_fork)
-		return (display_err_msg(ERR_ALLOC));
-	if (pthread_mutex_init(ph->right_fork, NULL) != SUCCESS)
-		return (display_err_msg(ERR_MTX_INIT));
 	return (TRUE);
 }
 

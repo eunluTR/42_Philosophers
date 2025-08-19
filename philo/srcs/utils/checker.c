@@ -6,15 +6,23 @@
 /*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:46:52 by eunlu             #+#    #+#             */
-/*   Updated: 2025/08/19 15:49:24 by eunlu            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:57:04 by eunlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static void		str_rtrim(char *str);
-static t_bool	check_limit(char *arg);
-static t_bool	check_validation(char *arg);
+static void	str_rtrim(char *str)
+{
+	int	i;
+
+	i = (int)ft_strlen(str) - 1;
+	while (i >= 0 && ft_isspace(str[i]))
+	{
+		str[i] = '\0';
+		i--;
+	}
+}
 
 static t_bool	is_positive_number(char *arg)
 {
@@ -30,21 +38,6 @@ static t_bool	is_positive_number(char *arg)
 	while (arg[i])
 	{
 		if (!ft_isdigit(arg[i]))
-			return (FALSE);
-		i++;
-	}
-	return (TRUE);
-}
-
-t_bool	check_args(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (i < argc)
-	{
-		str_rtrim(argv[i]);
-		if (!check_validation(argv[i]) || !check_limit(argv[i]))
 			return (FALSE);
 		i++;
 	}
@@ -72,14 +65,17 @@ static t_bool	check_limit(char *arg)
 	return (TRUE);
 }
 
-static void	str_rtrim(char *str)
+t_bool	check_args(int argc, char **argv)
 {
 	int	i;
 
-	i = (int)ft_strlen(str) - 1;
-	while (i >= 0 && ft_isspace(str[i]))
+	i = 1;
+	while (i < argc)
 	{
-		str[i] = '\0';
-		i--;
+		str_rtrim(argv[i]);
+		if (!check_validation(argv[i]) || !check_limit(argv[i]))
+			return (FALSE);
+		i++;
 	}
+	return (TRUE);
 }

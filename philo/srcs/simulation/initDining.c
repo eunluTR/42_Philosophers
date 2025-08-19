@@ -6,14 +6,37 @@
 /*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 15:28:15 by eunlu             #+#    #+#             */
-/*   Updated: 2025/08/19 15:42:44 by eunlu            ###   ########.fr       */
+/*   Updated: 2025/08/19 15:58:52 by eunlu            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-static void	*run_dining(void *arg);
-static void	cleanup_partial(t_philo *philos, size_t count);
+static void	*run_dining(void *arg)
+{
+	t_philo	*ph;
+
+	ph = (t_philo *)arg;
+	if (get_error_flag(ph->shared, ph->locks))
+		return (NULL);
+	if (ph->id % 2 == 0)
+		usleep(100);
+	start_routine(ph);
+	return (NULL);
+}
+
+static void	cleanup_partial(t_philo *philos, size_t count)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < count)
+	{
+		if (philos[i].thread)
+			pthread_join(philos[i].thread, NULL);
+		i++;
+	}
+}
 
 static t_bool	start_threads(t_table *table)
 {
@@ -50,32 +73,6 @@ static void	join_threads(t_table *table)
 		i++;
 	}
 	pthread_join(table->monitor, NULL);
-}
-
-static void	*run_dining(void *arg)
-{
-	t_philo	*ph;
-
-	ph = (t_philo *)arg;
-	if (get_error_flag(ph->shared, ph->locks))
-		return (NULL);
-	if (ph->id % 2 == 0)
-		usleep(100);
-	start_routine(ph);
-	return (NULL);
-}
-
-static void	cleanup_partial(t_philo *philos, size_t count)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < count)
-	{
-		if (philos[i].thread)
-			pthread_join(philos[i].thread, NULL);
-		i++;
-	}
 }
 
 t_bool	init_simulation(t_table *table)
