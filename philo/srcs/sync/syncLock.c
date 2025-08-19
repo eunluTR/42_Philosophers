@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 void	lock_the_mutex(t_mutex *lock)
 {

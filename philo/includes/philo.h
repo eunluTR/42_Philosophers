@@ -103,43 +103,4 @@ typedef struct s_table
 	t_custom	data;
 } t_table;
 
-
-t_table		*init_table(char **argv, int argc);
-t_bool		init_philos(t_philo **philos, char **argv, int argc);
-void		init_custom_data(t_custom *data, char **argv, int argc);
-void		set_left_forks(t_philo *philos);
-void		set_fork_priority(t_philo *philos);
-t_table		*init(char **argv, int argc);
-
-t_bool		init_simulation(t_table *table);
-void		*monitor(void *arg);
-void		start_routine(t_philo *philo);
-t_bool		eating(t_philo *philo);
-t_bool		start_simulation(t_table *table);
-
-t_bool		check_args(int argc, char **argv);
-void		free_table(t_table *table);
-
-void		*ft_calloc(size_t count, size_t size);
-size_t		ft_strlen(char *str);
-size_t		ft_atoui(const char *str);
-t_bool		ft_isspace(char c);
-t_bool		ft_isdigit(char c);
-void		ft_putstr(char *str, int fd);
-void		ft_putendl(char *str, int fd);
-
-t_ms		get_timestamp(t_shared *data, t_locks *locks);
-void		elapse_time(t_shared *data, t_locks *locks, t_ms duration);
-t_bool		display_status(t_philo *philo, t_status status);
-t_bool		display_err_msg(char *msg);
-
-void		set_error_flag(t_shared *data, t_locks *locks, t_bool val);
-void		set_death_flag(t_shared *data, t_locks *locks, t_bool val);
-void		set_full_flag(t_shared *data, t_locks *locks, t_bool val);
-t_bool		get_error_flag(t_shared *data, t_locks *locks);
-t_bool		get_death_flag(t_shared *data, t_locks *locks);
-t_bool		get_full_flag(t_shared *data, t_locks *locks);
-void		lock_the_mutex(t_mutex *lock);
-void		unlock_the_mutex(t_mutex *lock);
-
 #endif

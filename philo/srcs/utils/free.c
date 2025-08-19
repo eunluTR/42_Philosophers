@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static void	free_mutex(pthread_mutex_t *mtx, t_bool *is_init)
 {

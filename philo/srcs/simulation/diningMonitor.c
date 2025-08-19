@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static t_bool	are_all_full(t_table *table)
 {

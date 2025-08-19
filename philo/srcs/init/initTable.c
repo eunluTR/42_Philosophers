@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static t_bool	init_locks(t_locks **locks);
 static t_bool	init_shared(t_shared **shared);

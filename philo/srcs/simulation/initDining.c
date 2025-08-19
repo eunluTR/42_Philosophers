@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static void		*run_dining(void *arg);
 static void		join_threads(t_table *table);

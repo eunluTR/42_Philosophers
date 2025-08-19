@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static t_bool	init_one(t_philo *ph, char **argv, int argc);
 

@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static t_bool	sleeping(t_philo *ph)
 {

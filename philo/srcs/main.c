@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 int	main(int argc, char **argv)
 {
@@ -8,10 +8,10 @@ int	main(int argc, char **argv)
 		return (display_err_msg(ERR_INV_ARGC));
 	if (!check_args(argc, argv))
 		return (display_err_msg(ERR_INV_ARGV));
-	table = init(argv, argc);
+	table = init_table(argv, argc);
 	if (!table)
 		return (1);
-	if (!start_simulation(table))
+	if (!init_simulation(table))
 	{
 		free_table(table);
 		return (1);

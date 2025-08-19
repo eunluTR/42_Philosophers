@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static t_bool	set_err_and_print(t_shared *data, t_locks *locks)
 {

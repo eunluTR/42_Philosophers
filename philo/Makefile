@@ -8,24 +8,20 @@ OBJ_DIR	:= objs
 
 SRCS		:= \
 	$(SRC_DIR)/main.c \
-	$(SRC_DIR)/simulation/simulation.c \
-	$(SRC_DIR)/simulation/utils/diningEating.c \
-	$(SRC_DIR)/simulation/utils/diningMonitor.c \
-	$(SRC_DIR)/simulation/utils/diningRoutine.c \
-	$(SRC_DIR)/simulation/utils/initDining.c \
-	$(SRC_DIR)/init/init.c \
-	$(SRC_DIR)/init/utils/initTable.c \
-	$(SRC_DIR)/init/utils/initPhilos.c \
-	$(SRC_DIR)/sync/sync.c \
-	$(SRC_DIR)/sync/utils/syncLock.c \
-	$(SRC_DIR)/sync/utils/syncGet.c \
-	$(SRC_DIR)/sync/utils/syncSet.c \
-	$(SRC_DIR)/core/utils/checker.c \
-	$(SRC_DIR)/core/utils/display.c \
-	$(SRC_DIR)/core/utils/time.c \
-	$(SRC_DIR)/core/utils/utils.c \
-	$(SRC_DIR)/core/utils/libftUtils.c \
-	$(SRC_DIR)/core/utils/free.c
+	$(SRC_DIR)/simulation/diningEating.c \
+	$(SRC_DIR)/simulation/diningMonitor.c \
+	$(SRC_DIR)/simulation/diningRoutine.c \
+	$(SRC_DIR)/simulation/initDining.c \
+	$(SRC_DIR)/init/initTable.c \
+	$(SRC_DIR)/init/initPhilos.c \
+	$(SRC_DIR)/sync/syncLock.c \
+	$(SRC_DIR)/sync/syncGet.c \
+	$(SRC_DIR)/sync/syncSet.c \
+	$(SRC_DIR)/utils/checker.c \
+	$(SRC_DIR)/utils/display.c \
+	$(SRC_DIR)/utils/time.c \
+	$(SRC_DIR)/utils/utils.c \
+	$(SRC_DIR)/utils/free.c
 
 OBJS		:= $(SRCS:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

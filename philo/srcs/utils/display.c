@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static const char	*get_msg(t_status st)
 {

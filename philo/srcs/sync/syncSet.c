@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 void	set_error_flag(t_shared *data, t_locks *locks, t_bool val)
 {

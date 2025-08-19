@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static t_bool	one_philo_eating(t_philo *ph)
 {

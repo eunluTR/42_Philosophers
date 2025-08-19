@@ -1,4 +1,4 @@
-#include "philo.h"
+#include "utils.h"
 
 static void	str_rtrim(char *str);
 static t_bool	check_limit(char *arg);
