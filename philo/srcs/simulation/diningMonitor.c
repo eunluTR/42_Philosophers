@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   diningMonitor.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:30:22 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:30:56 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 
 static t_bool	are_all_full(t_table *table)
@@ -24,7 +36,8 @@ static t_bool	are_all_full(t_table *table)
 
 static t_ms	get_last_meal_time_safe(t_philo *ph)
 {
-	t_ms v;
+	t_ms	v;
+
 	pthread_mutex_lock(&ph->locks->mtx_meal);
 	v = ph->data.last_meal_time;
 	pthread_mutex_unlock(&ph->locks->mtx_meal);
@@ -57,7 +70,7 @@ static t_bool	is_any_dead(t_table *table)
 
 void	*monitor(void *arg)
 {
-	t_table *table;
+	t_table	*table;
 
 	table = (t_table *)arg;
 	while (TRUE)

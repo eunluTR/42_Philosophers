@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   diningEating.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:29:43 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:30:09 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 
 static t_bool	one_philo_eating(t_philo *ph)
@@ -10,7 +22,8 @@ static t_bool	pick_up_forks(t_philo *ph)
 {
 	lock_the_mutex(ph->first_fork);
 	lock_the_mutex(ph->last_fork);
-	if (!display_status(ph, ST_PICKING_UP_FORK) || !display_status(ph, ST_PICKING_UP_FORK))
+	if (!display_status(ph, ST_PICKING_UP_FORK)
+		|| !display_status(ph, ST_PICKING_UP_FORK))
 	{
 		unlock_the_mutex(ph->last_fork);
 		unlock_the_mutex(ph->first_fork);
@@ -37,10 +50,9 @@ static void	check_satisfaction(t_philo *ph)
 	}
 }
 
-
 t_bool	eating(t_philo *ph)
 {
-	t_ms *ref;
+	t_ms	*ref;
 
 	if (ph->data.philo_count == 1)
 		return (one_philo_eating(ph));

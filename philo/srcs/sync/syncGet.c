@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   syncGet.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:31:13 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:31:27 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 
 t_bool	get_error_flag(t_shared *data, t_locks *locks)
@@ -10,7 +22,6 @@ t_bool	get_error_flag(t_shared *data, t_locks *locks)
 	return (val);
 }
 
-
 t_bool	get_death_flag(t_shared *data, t_locks *locks)
 {
 	t_bool	val;
@@ -20,7 +31,6 @@ t_bool	get_death_flag(t_shared *data, t_locks *locks)
 	pthread_mutex_unlock(&locks->mtx_death);
 	return (val);
 }
-
 
 t_bool	get_full_flag(t_shared *data, t_locks *locks)
 {

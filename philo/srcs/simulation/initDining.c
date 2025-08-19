@@ -1,18 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initDining.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:28:15 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:42:44 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 
-static void		*run_dining(void *arg);
-static void		join_threads(t_table *table);
-static t_bool	start_threads(t_table *table);
-static void		cleanup_partial(t_philo *philos, size_t count);
+static void	*run_dining(void *arg);
+static void	cleanup_partial(t_philo *philos, size_t count);
 
 static t_bool	start_threads(t_table *table)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < table->data.philo_count)
 	{
-		if (pthread_create(&table->philos[i].thread, NULL, &run_dining, \
+		if (pthread_create(&table->philos[i].thread, NULL, &run_dining,
 				&table->philos[i]) != SUCCESS)
 		{
 			set_error_flag(table->shared, table->locks, TRUE);
@@ -31,7 +41,8 @@ static t_bool	start_threads(t_table *table)
 
 static void	join_threads(t_table *table)
 {
-	size_t i;
+	size_t	i;
+
 	i = 0;
 	while (i < table->data.philo_count)
 	{
@@ -43,7 +54,7 @@ static void	join_threads(t_table *table)
 
 static void	*run_dining(void *arg)
 {
-	t_philo *ph;
+	t_philo	*ph;
 
 	ph = (t_philo *)arg;
 	if (get_error_flag(ph->shared, ph->locks))
@@ -56,7 +67,7 @@ static void	*run_dining(void *arg)
 
 static void	cleanup_partial(t_philo *philos, size_t count)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (i < count)
@@ -66,7 +77,6 @@ static void	cleanup_partial(t_philo *philos, size_t count)
 		i++;
 	}
 }
-
 
 t_bool	init_simulation(t_table *table)
 {

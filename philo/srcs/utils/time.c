@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:48:13 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:48:37 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "utils.h"
 
 static t_bool	set_err_and_print(t_shared *data, t_locks *locks)
@@ -11,7 +23,7 @@ static t_bool	set_err_and_print(t_shared *data, t_locks *locks)
 
 t_ms	get_timestamp(t_shared *data, t_locks *locks)
 {
-	struct timeval tv;
+	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) != SUCCESS)
 	{
@@ -23,8 +35,8 @@ t_ms	get_timestamp(t_shared *data, t_locks *locks)
 
 void	elapse_time(t_shared *data, t_locks *locks, t_ms duration)
 {
-	t_ms start;
-	t_ms now;
+	t_ms	start;
+	t_ms	now;
 
 	start = get_timestamp(data, locks);
 	while (TRUE)

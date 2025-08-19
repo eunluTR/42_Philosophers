@@ -1,12 +1,20 @@
-#include "utils.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: eunlu <eunlu@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/08/19 15:46:52 by eunlu             #+#    #+#             */
+/*   Updated: 2025/08/19 15:47:16 by eunlu            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-static void	str_rtrim(char *str);
-static t_bool	check_limit(char *arg);
-static t_bool	check_validation(char *arg);
+#include "utils.h"
 
 static t_bool	is_positive_number(char *arg)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (arg[i] && ft_isspace(arg[i]))
@@ -26,7 +34,7 @@ static t_bool	is_positive_number(char *arg)
 
 t_bool	check_args(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	while (i < argc)
@@ -62,7 +70,7 @@ static t_bool	check_limit(char *arg)
 
 static void	str_rtrim(char *str)
 {
-	int i;
+	int	i;
 
 	i = (int)ft_strlen(str) - 1;
 	while (i >= 0 && ft_isspace(str[i]))
